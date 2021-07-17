@@ -3,6 +3,25 @@ import axios from "axios";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
+    constructor () {
+      super()
+      console.log('App: set up state')
+      this.state = {
+        plants: []
+      }
+    }
+
+    componentDidMount() {
+      console.log('App: CDM');
+      axios.get('http://localhost:3333/plants')
+        .then(res => {
+          console.log('App: CDM, fetch plants', res)
+          this.setState({
+            plants: res.data.plantsData
+          })
+        })
+        .catch(error => console.log(error))
+    }
 
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
