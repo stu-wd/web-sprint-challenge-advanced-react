@@ -15,7 +15,7 @@ function App() {
   useEffect(()=>{
     axios.get('http://localhost:3333/plants')
       .then(res =>{
-        console.log(res);
+        console.log('App: useEffect', res);
       })
   });
 
